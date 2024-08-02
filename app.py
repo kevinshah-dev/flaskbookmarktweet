@@ -45,17 +45,19 @@ def submit():
         print(f"Error: {e}")  # Logging error to console
         return jsonify(error='Failed to get request token'), 500
 
-@app.route('/twitter_callback', methods=['GET'])
+@app.route('/twitter_callback', methods=['GET', 'POST'])
 def twitter_callback():
     state = session.get('state')
     #Print request
+    data = request.get_json()
+    session["authorization_url"] = data.get("authorization_url")
     print(f"request: {request}")
     authorization_response = request.url
     print(f"Authorization response: {authorization_response}")  # Logging to console
 
     try:
         token = auth.fetch_token(
-            authorization_response=authorization_response,
+            authorization_response=session["authorization_url"]
         )
         print(f"Access token: {token['access_token']}")  # Logging to console
 
@@ -68,7 +70,7 @@ def twitter_callback():
         bookmark_urls = [f"https://twitter.com/{tweet['author_id']}/status/{tweet['id']}" for tweet in bookmarks.data]
         
 
-        return jsonify(message=f"Successfully connected to Twitter! User's bookmarks have been sent to {email}")
+        return jsonify(message=f"Successfully connected to Twitter! User's bookmarks have been sent to ")
 
     except Exception as e:
         print(f"Error: {e}")  # Logging error to console
