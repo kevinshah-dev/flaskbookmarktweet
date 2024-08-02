@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    print("Hello World")
     return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
 
 
