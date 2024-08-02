@@ -60,6 +60,8 @@ def twitter_callback():
         print(f"Token: {token}")
         client = tweepy.Client(token['access_token'])
         print("Is this hitting?")
+        print(client_id)
+        print(client_secret)
         # Fetch bookmarks
         bookmarks = client.get_bookmarks(max_results=10)  # Adjust max_results as needed
         print(f"Bookmarks: {bookmarks.data}")  # Logging to console
