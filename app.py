@@ -19,4 +19,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=8080))
+    port = int(os.environ.get('PORT', 8080))  # Use 8080 as default
+    app.run(debug=True, host='0.0.0.0', port=port)
