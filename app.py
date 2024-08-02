@@ -48,17 +48,18 @@ def submit():
 @app.route('/twitter_callback', methods=['GET'])
 def twitter_callback():
     state = session.get('state')
+    #Print request
+    print(f"request: {request}")
     authorization_response = request.url
     print(f"Authorization response: {authorization_response}")  # Logging to console
 
     try:
         token = auth.fetch_token(
             authorization_response=authorization_response,
-            client_secret=client_secret
         )
         print(f"Access token: {token['access_token']}")  # Logging to console
 
-        client = tweepy.Client(bearer_token=token['access_token'])
+        client = tweepy.Client(token)
 
         # Fetch bookmarks
         bookmarks = client.get_bookmarks(max_results=10)  # Adjust max_results as needed
