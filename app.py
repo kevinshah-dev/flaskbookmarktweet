@@ -66,6 +66,8 @@ def twitter_callback():
         print("Is this hitting?")
         print(client_id)
         print(client_secret)
+        me = client.get_me()
+        print(f"Authenticated user: {me.data.username}")
         # Fetch bookmarks
         bookmarks = client.get_bookmarks(max_results=10)  # Adjust max_results as needed
         print(f"Bookmarks: {bookmarks.data}")  # Logging to console
