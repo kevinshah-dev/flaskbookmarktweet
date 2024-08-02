@@ -38,7 +38,7 @@ def submit():
     try:
         redirect_url = auth.get_authorization_url()
         print(redirect_url);
-        session['request_token'] = auth.request_token
+        #session['request_token'] = auth.request_token
         print(f"Redirect URL: {redirect_url}")  # Logging to console
         return jsonify(redirect_url=redirect_url)
     except tweepy.TweepyException as e:
