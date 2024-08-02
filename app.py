@@ -37,10 +37,11 @@ def submit():
     print(f"Received email: {session['email']}")  # Logging to console
     try:
         redirect_url = auth.get_authorization_url()
+        print(redirect_url);
         session['request_token'] = auth.request_token
         print(f"Redirect URL: {redirect_url}")  # Logging to console
         return jsonify(redirect_url=redirect_url)
-    except tweepy.TweepError as e:
+    except tweepy.TweepyException as e:
         print(f"Error: {e}")  # Logging error to console
         return jsonify(error='Failed to get request token'), 500
 
