@@ -59,7 +59,6 @@ def twitter_callback():
         token = auth.fetch_token(
             authorization_response=session["authorization_url"]
         )
-        print(f"Access token: {token.access_token}")  # Logging to console
 
         client = tweepy.Client(token)
 
