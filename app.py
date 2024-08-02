@@ -56,9 +56,7 @@ def twitter_callback():
     print(f"Authorization response: {authorization_response}")  # Logging to console
 
     try:
-        token = auth.fetch_token(
-            authorization_response=session["authorization_url"]
-        )
+        token = auth.fetch_token(session["authorization_url"])
 
         client = tweepy.Client(token)
         print("Is this hitting?")
