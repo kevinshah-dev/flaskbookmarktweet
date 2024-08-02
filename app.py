@@ -18,6 +18,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 auth = tweepy.OAuth2UserHandler(
     client_id=client_id,
     redirect_uri=callback_url,
+    scope=["tweet.read", "users.read", "bookmark.read", "follows.read", "like.read"],
     client_secret=client_secret
 )
 
