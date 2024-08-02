@@ -12,7 +12,8 @@ client_secret = os.environ.get("TWITTER_CLIENT_SECRET")
 
 
 app = Flask(__name__)
-CORS(app)
+app.secret_key = os.environ.get("SECRET_KEY")
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 auth = tweepy.OAuth2UserHandler(
     client_id=client_id,
