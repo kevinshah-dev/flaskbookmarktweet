@@ -58,7 +58,7 @@ def twitter_callback():
     try:
         token = auth.fetch_token(session["authorization_url"])
         print(f"Token: {token}")
-        client = tweepy.Client(bearer_token=token['access_token'], )
+        client = tweepy.Client(bearer_token=token['access_token'])
         print("Is this hitting?")
         print(client_id)
         print(client_secret)
