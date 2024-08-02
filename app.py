@@ -57,7 +57,7 @@ def twitter_callback():
 
     try:
         token = auth.fetch_token(session["authorization_url"])
-
+        print(f"Token: {token}")
         client = tweepy.Client(token)
         print("Is this hitting?")
         # Fetch bookmarks
